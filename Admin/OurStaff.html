@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Staff</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background-color: #2d2d30;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            font-family: "roboto";
+        }
+        
+        .navbar .dashboard {
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar .menu-icon {
+            color: white;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .navbar .icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icons>i {
+            margin-right: 20px;
+        }
+        
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .profile-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: white;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            width: 150px;
+            z-index: 1000;
+        }
+        
+        .profile-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        
+        .profile-menu a:hover {
+            background: #f1f1f1;
+        }
+        
+        .profile-icon {
+            cursor: pointer;
+            color: white;
+            font-size: 1.2em;
+        }
+        
+        .left-nav {
+            width: 220px;
+            background-color: #2d2d30;
+            position: fixed;
+            top: 50px;
+            left: 0;
+            height: calc(100vh - 50px);
+            display: none;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            z-index: 999;
+            font-family: "Open Sans";
+        }
+        
+        .left-nav .category {
+            cursor: pointer;
+            margin: 15px 0;
+            color: rgb(255, 255, 255);
+        }
+
+
+        .left-nav .sub-category a div,
+        .left-nav .category {
+        color: rgb(255, 255, 255) !important;
+        text-decoration: none !important;
+        }
+
+        .left-nav .sub-category a:hover div {
+            color: rgb(255, 255, 255) !important;
+            text-decoration: none !important;
+        }
+
+        .left-nav .sub-category a {
+            text-decoration: none !important;
+        }
+        
+        .sub-category {
+            margin-left: 20px;
+            display: none;
+        }
+        
+        .logout-button {
+            background-color: #005f73;
+            color: #d3d3d3;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .logout-button:hover {
+            background-color: #007bff;
+        }
+        
+        .main-content {
+            margin-left: 18%;
+            padding: 70px 0px 0px 0px;
+            transition: margin-left 0.3s;
+            font-family: "Ancizar Serif ";
+
+        }
+        
+     
+        
+        footer {
+            background-color: #808080;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            width: 100%;
+            font-family: "Open Sans";
+        }
+        
+
+        .left-nav a {
+        color: inherit !important;
+        text-decoration: none !important;
+        }
+
+        .left-nav a:hover {
+        color: inherit !important;
+        text-decoration: none !important;
+        }
+
+        .profile-icon {
+        cursor: pointer;
+        color: white;
+        font-size: 1.7em; 
+        }
+
+        /* Added table border styles */
+        .table {
+            border: 1px solid #dee2e6;
+        }
+        
+        .table th, .table td {
+            border: 1px solid #dee2e6;
+            vertical-align: middle;
+        }
+        
+        .table thead th {
+            border-bottom-width: 2px;
+        }
+        
+        .staff-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .action-buttons .btn {
+            margin: 0 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="dashboard">
+            <i class="fas fa-bars menu-icon" id="menuIcon"></i>
+            <span style="margin-left: 10px; font-size: 20px;">Dashboard</span>
+        </div>
+ 
+
+        <div class="icons">
+            <div class="profile-dropdown">
+                <i class="fas fa-user-circle profile-icon" id="profileIcon"></i>
+                <div class="profile-menu" id="profileMenu" style=" font-family: Open Sans;">
+                    <a href="">Profile</a>
+                    <a href="Login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="left-nav" id="leftNav">
+        <div class="category" id="catalog">Inventory<i class="fas fa-chevron-down" id="catalogToggle"></i></div>
+        <div class="sub-category" id="catalogSub">
+           <a href="seventh.html"><div>Products</div></a> 
+            <!-- <a href="eight.html"><div>Categories</div></a> -->
+            <a href="nine.html"><div>Coupons</div></a>
+        </div>
+        <div class="category" id="customers">Customers <i class="fas fa-chevron-down" id="customersToggle"></i></div>
+        <div class="sub-category" id="customersSub">
+           <a href="tenth.html"><div>Customer Details</div></a> 
+        </div>
+       <a href=""><div class="category" >Orders</div></a> 
+        <div class="category" id="onlineStore">Online Store <i class="fas fa-chevron-down" id="onlineStoreToggle"></i></div>
+        <div class="sub-category" id="onlineStoreSub" style="display: none;">
+            <a href="Eleventh.html"><div>View Store</div></a>
+            <a href="twelth.html"><div>Store Customization</div></a>
+            <a href="thirteen.html"><div>Store Settings</div></a>
+        </div>
+        <a href="fourteen.html"><div class="category">Our Staff</div></a>
+       <a href="fifteen.html"><div class="category" id="settings">Settings</div></a> 
+        <button class="logout-button" onclick="window.location.href='second.html'"> <i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <div class="main-content">
+        <h3 class="mb-4" style="font-size:21px; font-weight: 350; font-family:roboto; "><b>OurStaff</b></h3>
+    </div>
+
+
+    <div class="filter-container" style="margin-left: 270px; margin-top: 20px; margin-bottom: 20px; padding: 20px; background-color: #f8f9fa; border-radius: 5px; margin-right: 40px; border:1px solid grey">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search name/email/phone">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option selected disabled>Staff Role</option>
+                    <option>Admin</option>
+                    <option>Cashier</option>
+                    <option>Accountant</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#addStaffModal">
+                    <i class="fas fa-plus"></i> Add Staff
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success w-100">
+                    <i class="fas fa-filter"></i> Filter
+                </button>
+            </div>
+
+            <div class="col-md-1">
+                <button class="btn btn-outline-secondary w-100 btn-sm" style="padding-top: 2px; padding-bottom: 2px; font-size: 13px; height: 35px; width: 90px;">
+                    <i class="fas fa-undo"></i> Reset
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!-- Staff Table -->
+    <div class="table-responsive" style="margin-left: 270px; margin-right: 40px;">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>Staff ID</th>
+                    <th>Staff Image</th>
+                    <th>Staff Name</th>
+                    <th>Email Address</th>
+                    <th>Contact</th>
+                    <th>Joining Date</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>EMP001</td>
+                    <td><img src="https://via.placeholder.com/40" class="staff-image" alt="Staff Image"></td>
+                    <td>John Doe</td>
+                    <td>john@example.com</td>
+                    <td>+1234567890</td>
+                    <td>2023-01-15</td>
+                    <td>Admin </td>
+                    <td><span class="badge bg-success">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-warning" onclick="enableRowEditing(this.closest('tr'))">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteRow(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>EMP002</td>
+                    <td><img src="https://via.placeholder.com/40" class="staff-image" alt="Staff Image"></td>
+                    <td>Jane Smith</td>
+                    <td>jane@example.com</td>
+                    <td>+1234567891</td>
+                    <td>2023-02-20</td>
+                    <td>Cashier</td>
+                    <td><span class="badge bg-success">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-warning" onclick="enableRowEditing(this.closest('tr'))">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteRow(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>EMP003</td>
+                    <td><img src="https://via.placeholder.com/40" class="staff-image" alt="Staff Image"></td>
+                    <td>Robert Johnson</td>
+                    <td>robert@example.com</td>
+                    <td>+1234567892</td>
+                    <td>2023-03-10</td>
+                    <td>Accountant</td>
+                    <td><span class="badge bg-success">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-warning" onclick="enableRowEditing(this.closest('tr'))">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteRow(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>EMP004</td>
+                    <td><img src="https://via.placeholder.com/40" class="staff-image" alt="Staff Image"></td>
+                    <td>Emily Davis</td>
+                    <td>emily@example.com</td>
+                    <td>+1234567893</td>
+                    <td>2023-04-05</td>
+                    <td>Cashier</td>
+                    <td><span class="badge bg-success">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-warning" onclick="enableRowEditing(this.closest('tr'))">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteRow(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>EMP005</td>
+                    <td><img src="https://via.placeholder.com/40" class="staff-image" alt="Staff Image"></td>
+                    <td>Michael Wilson</td>
+                    <td>michael@example.com</td>
+                    <td>+1234567894</td>
+                    <td>2023-05-12</td>
+                    <td>Admin</td>
+                    <td><span class="badge bg-success">Active</span></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-warning" onclick="enableRowEditing(this.closest('tr'))">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteRow(this)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Staff Modal -->
+    <div class="modal fade" id="addStaffModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStaffModalLabel">Add New Staff</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="staffForm">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="staffImage" class="form-label">Staff Image</label>
+                                <input type="file" class="form-control" id="staffImage" accept="image/*">
+                                <small class="text-muted">Image will be displayed in the table</small>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="staffName" class="form-label">Staff Name</label>
+                                        <input type="text" class="form-control" id="staffName" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="staffEmail" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="staffEmail" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="staffPassword" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="staffPassword" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="staffContact" class="form-label">Contact Number</label>
+                                        <input type="tel" class="form-control" id="staffContact" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="joiningDate" class="form-label">Joining Date</label>
+                                <input type="date" class="form-control" id="joiningDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffRole" class="form-label">Staff Role</label>
+                                <select class="form-select" id="staffRole" required>
+                                    <option value="">Select Role</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Cashier">Cashier</option>
+                                    <option value="Accountant">Accountant</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveStaffBtn">Add Staff</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #f0f0f0; height: 60px; display: flex; align-items: center; justify-content: center;font-family: Open Sans;">
+        <!-- <img src="Img/logo.jpg" alt="Kunash Media Logo" style="height: 40px;  width:60px ;margin-right: 15px;"> -->
+        <p style="color: black; font-weight: 400; margin: 0; font-size: medium;">© 2025 Kunash Media | Developed by Pranjal Prasad</p>
+    </footer>
+
+<script>
+    // Function to enable row editing
+    function enableRowEditing(row) {
+        const cells = row.cells;
+        
+        // Skip first cell (checkbox), image cell, and last cell (actions)
+        for (let i = 1; i < cells.length - 1; i++) {
+            // Skip the image cell (index 2)
+            if (i === 2) continue;
+            
+            const cell = cells[i];
+            const cellContent = cell.innerHTML;
+            
+            // Handle status cell differently (as a select)
+            if (i === 8) { // Status cell
+                const isActive = cellContent.includes('bg-success');
+                cell.innerHTML = `
+                    <select class="form-select form-select-sm">
+                        <option value="active" ${isActive ? 'selected' : ''}>Active</option>
+                        <option value="inactive" ${!isActive ? 'selected' : ''}>Inactive</option>
+                    </select>
+                `;
+            } 
+            // Handle role cell as a select
+            else if (i === 7) { // Role cell
+                const currentRole = cell.textContent.trim();
+                cell.innerHTML = `
+                    <select class="form-select form-select-sm">
+                        <option value="Admin" ${currentRole === 'Admin' ? 'selected' : ''}>Admin</option>
+                        <option value="Cashier" ${currentRole === 'Cashier' ? 'selected' : ''}>Cashier</option>
+                        <option value="Accountant" ${currentRole === 'Accountant' ? 'selected' : ''}>Accountant</option>
+                    </select>
+                `;
+            }
+            // Handle other cells as editable content
+            else {
+                cell.contentEditable = true;
+                cell.style.backgroundColor = '#fff8e1';
+            }
+        }
+
+        // Change action buttons to Save and Cancel
+        const actionCell = cells[cells.length - 1];
+        actionCell.innerHTML = `
+            <button class="btn btn-sm btn-success" onclick="saveRowChanges(this.closest('tr'))">
+                <i class="fas fa-save"></i> Save
+            </button>
+            <button class="btn btn-sm btn-secondary" onclick="cancelRowEditing(this.closest('tr'))">
+                <i class="fas fa-times"></i> Cancel
+            </button>
+        `;
+    }
+
+    // Function to save row changes
+    function saveRowChanges(row) {
+        const cells = row.cells;
+        
+        for (let i = 1; i < cells.length - 1; i++) {
+            // Skip the image cell (index 2)
+            if (i === 2) continue;
+            
+            const cell = cells[i];
+            
+            // Handle status cell
+            if (i === 8) {
+                const select = cell.querySelector('select');
+                const status = select.value;
+                cell.innerHTML = `<span class="badge ${status === 'active' ? 'bg-success' : 'bg-secondary'}">${status === 'active' ? 'Active' : 'Inactive'}</span>`;
+            } 
+            // Handle role cell
+            else if (i === 7) {
+                const select = cell.querySelector('select');
+                cell.textContent = select.value;
+            }
+            // Handle other cells
+            else {
+                cell.contentEditable = false;
+                cell.style.backgroundColor = '';
+            }
+        }
+
+        // Restore action buttons
+        const actionCell = cells[cells.length - 1];
+        actionCell.innerHTML = `
+            <button class="btn btn-sm btn-warning" onclick="enableRowEditing(this.closest('tr'))">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" onclick="deleteRow(this)">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+    }
+
+    // Function to cancel row editing
+    function cancelRowEditing(row) {
+        const cells = row.cells;
+        
+        for (let i = 1; i < cells.length - 1; i++) {
+            // Skip the image cell (index 2)
+            if (i === 2) continue;
+            
+            const cell = cells[i];
+            
+            // If it's a select element (status or role), we need to revert to original value
+            if (cell.querySelector('select')) {
+                // We don't have the original value stored, so we'll just make it uneditable
+                // In a real app, you'd want to store the original values before editing
+                if (i === 8) { // Status cell
+                    cell.innerHTML = `<span class="badge bg-success">Active</span>`;
+                } else if (i === 7) { // Role cell
+                    cell.textContent = 'Admin'; // Default value
+                }
+            } else {
+                cell.contentEditable = false;
+                cell.style.backgroundColor = '';
+            }
+        }
+
+        // Restore action buttons
+        const actionCell = cells[cells.length - 1];
+        actionCell.innerHTML = `
+            <button class="btn btn-sm btn-warning" onclick="enableRowEditing(this.closest('tr'))">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" onclick="deleteRow(this)">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+    }
+
+    // Function to delete a row
+    function deleteRow(btn) {
+        if (confirm('Are you sure you want to delete this staff member?')) {
+            btn.closest('tr').remove();
+        }
+    }
+
+    
+
+    // Event listeners for navigation and profile menu
+    document.addEventListener('DOMContentLoaded', function() {
+        // Left nav toggle
+        document.getElementById('menuIcon').addEventListener('click', function() {
+            const leftNav = document.getElementById('leftNav');
+            leftNav.style.display = leftNav.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Profile menu toggle
+        document.getElementById('profileIcon').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const menu = document.getElementById('profileMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Close profile menu when clicking outside
+        document.addEventListener('click', function() {
+            document.getElementById('profileMenu').style.display = 'none';
+        });
+
+        // Submenu toggles
+        document.getElementById('onlineStoreToggle').addEventListener('click', function() {
+            const sub = document.getElementById('onlineStoreSub');
+            sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        document.getElementById('catalogToggle').addEventListener('click', function() {
+            const sub = document.getElementById('catalogSub');
+            sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('customersToggle').addEventListener('click', function() {
+            const sub = document.getElementById('customersSub');
+            sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Save staff button functionality
+        document.getElementById('saveStaffBtn').addEventListener('click', function() {
+            // Get form values
+            const staffName = document.getElementById('staffName').value;
+            const staffEmail = document.getElementById('staffEmail').value;
+            const staffContact = document.getElementById('staffContact').value;
+            const joiningDate = document.getElementById('joiningDate').value;
+            const staffRole = document.getElementById('staffRole').value;
+            const staffImageInput = document.getElementById('staffImage');
+            
+            // Validate required fields
+            if (!staffName || !staffEmail || !staffContact || !joiningDate || !staffRole) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Generate a random staff ID
+            const staffId = 'EMP' + Math.floor(1000 + Math.random() * 9000);
+            
+            // Get image preview if available
+            let imagePreview = 'https://via.placeholder.com/40';
+            if (staffImageInput.files && staffImageInput.files[0]) {
+                imagePreview = URL.createObjectURL(staffImageInput.files[0]);
+            }
+            
+            // Create a new table row
+            const tbody = document.querySelector('tbody');
+            const newRow = document.createElement('tr');
+            
+            newRow.innerHTML = `
+                <td><input type="checkbox"></td>
+                <td>${staffId}</td>
+                <td><img src="${imagePreview}" class="staff-image" alt="Staff Image"></td>
+                <td>${staffName}</td>
+                <td>${staffEmail}</td>
+                <td>${staffContact}</td>
+                <td>${joiningDate}</td>
+                <td>${staffRole}</td>
+                <td><span class="badge bg-success">Active</span></td>
+                <td class="action-buttons">
+                    <button class="btn btn-sm btn-warning" onclick="enableRowEditing(this.closest('tr'))">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteRow(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            
+            // Add the new row to the table
+            tbody.appendChild(newRow);
+            
+            // Reset the form
+            document.getElementById('staffForm').reset();
+            
+            // Close the modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addStaffModal'));
+            modal.hide();
+            
+            // Show success message
+            alert('Staff member added successfully!');
+        });
+    });
+
+    // Store the original table data
+let originalTableData = [];
+
+// Function to store original table data
+function storeOriginalTableData() {
+    const tbody = document.querySelector('tbody');
+    originalTableData = Array.from(tbody.children).map(row => row.outerHTML);
+}
+
+// Function to filter the table
+function filterTable() {
+    const searchInput = document.querySelector('.filter-container input').value.toLowerCase();
+    const roleSelect = document.querySelector('.filter-container select');
+    const selectedRole = roleSelect.options[roleSelect.selectedIndex].text;
+    
+    const rows = document.querySelectorAll('tbody tr');
+    
+    rows.forEach(row => {
+        const cells = row.cells;
+        const name = cells[3].textContent.toLowerCase();
+        const email = cells[4].textContent.toLowerCase();
+        const phone = cells[5].textContent.toLowerCase();
+        const role = cells[7].textContent;
+        
+        // Check if row matches search criteria
+        const matchesSearch = searchInput === '' || 
+                             name.includes(searchInput) || 
+                             email.includes(searchInput) || 
+                             phone.includes(searchInput);
+        
+        // Check if row matches role filter
+        const matchesRole = selectedRole === 'Staff Role' || role === selectedRole;
+        
+        // Show/hide row based on filters
+        row.style.display = (matchesSearch && matchesRole) ? '' : 'none';
+    });
+}
+
+// Function to reset the table
+function resetTable() {
+    const tbody = document.querySelector('tbody');
+    tbody.innerHTML = originalTableData.join('');
+    
+    // Reset filter inputs
+    document.querySelector('.filter-container input').value = '';
+    document.querySelector('.filter-container select').selectedIndex = 0;
+    
+    // Reattach event listeners to the reset rows
+    reattachRowEventListeners();
+}
+
+// Function to reattach event listeners after reset
+function reattachRowEventListeners() {
+    document.querySelectorAll('tbody tr').forEach(row => {
+        const editBtn = row.querySelector('.btn-warning');
+        const deleteBtn = row.querySelector('.btn-danger');
+        
+        if (editBtn) {
+            editBtn.onclick = function() {
+                enableRowEditing(this.closest('tr'));
+            };
+        }
+        
+        if (deleteBtn) {
+            deleteBtn.onclick = function() {
+                deleteRow(this);
+            };
+        }
+    });
+}
+
+// Initialize the filtering functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Store original table data
+    storeOriginalTableData();
+    
+    // Filter button click handler
+    const filterBtn = document.querySelector('.filter-container .btn-success');
+    if (filterBtn) {
+        filterBtn.addEventListener('click', filterTable);
+    }
+    
+    // Reset button click handler
+    const resetBtn = document.querySelector('.filter-container .btn-outline-secondary');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetTable);
+    }
+    
+    // Enter key in search input
+    const searchInput = document.querySelector('.filter-container input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                filterTable();
+            }
+        });
+    }
+});
+
+// Check if there's a new staff member from registration
+    const newStaffData = localStorage.getItem('newStaffMember');
+    if (newStaffData) {
+        const staffMember = JSON.parse(newStaffData);
+        
+        // Generate a random staff ID
+        const staffId = 'EMP' + Math.floor(1000 + Math.random() * 9000);
+        
+        // Create a new table row
+        const tbody = document.querySelector('tbody');
+        const newRow = document.createElement('tr');
+        
+        newRow.innerHTML = `
+            <td><input type="checkbox"></td>
+            <td>${staffId}</td>
+            <td><img src="https://via.placeholder.com/40" class="staff-image" alt="Staff Image"></td>
+            <td>${staffMember.name}</td>
+            <td>${staffMember.email}</td>
+            <td>${staffMember.contact}</td>
+            <td>${staffMember.joiningDate}</td>
+            <td>${staffMember.role}</td>
+            <td><span class="badge bg-success">Active</span></td>
+            <td class="action-buttons">
+                <button class="btn btn-sm btn-warning" onclick="enableRowEditing(this.closest('tr'))">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" onclick="deleteRow(this)">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        `;
+        
+        // Add the new row to the table
+        tbody.appendChild(newRow);
+        
+        // Clear the stored data
+        localStorage.removeItem('newStaffMember');
+        
+        // Show success message
+        alert('New staff member added from registration!');
+    }
+    
+</script>
+
+</body>
+</html>
