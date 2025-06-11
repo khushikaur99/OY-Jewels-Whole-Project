@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Store Customization</title>
+
+  <!-- Font Awesome & Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <div class="dashboard">
+      <i class="fas fa-bars menu-icon" id="menuIcon"></i>
+      <span style="margin-left: 10px; font-size: 20px;">Dashboard</span>
+    </div>
+
+    <div class="icons">
+      <div class="profile-dropdown">
+        <i class="fas fa-user-circle profile-icon" id="profileIcon"></i>
+        <div class="profile-menu" id="profileMenu">
+          <a href="#">Profile</a>
+          <a href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar Navigation -->
+  <div class="left-nav" id="leftNav">
+    <div class="category" id="catalog">Inventory <i class="fas fa-chevron-down" id="catalogToggle"></i></div>
+    <div class="sub-category" id="catalogSub">
+      <a href="Products.html"><div>Products</div></a>
+      <a href="Coupon.html"><div>Coupons</div></a>
+    </div>
+
+    <div class="category" id="customers">Customers <i class="fas fa-chevron-down" id="customersToggle"></i></div>
+    <div class="sub-category" id="customersSub">
+      <a href="CustomerDetails.html"><div>Customer Details</div></a>
+    </div>
+
+    <a href=""><div class="category">Orders</div></a>
+
+    <div class="category" id="onlineStore">Online Store <i class="fas fa-chevron-down" id="onlineStoreToggle"></i></div>
+    <div class="sub-category" id="onlineStoreSub">
+      <a href="#"><div>View Store</div></a>
+      <a href="StoreCustomization.html"><div>Store Customization</div></a>
+      <a href="StoreSettings.html"><div>Store Settings</div></a>
+    </div>
+
+    <a href="OurStaff.html"><div class="category">Our Staff</div></a>
+    <a href="Settings.html"><div class="category">Settings</div></a>
+
+    <button class="logout-button" onclick="window.location.href='login.html'">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h4 class="mb-4" style="font-size:21px; font-weight: 350; font-family:roboto;"><b>Store Customization</b></h4>
+
+    <!-- Customization Tabs -->
+    <div class="customization-nav">
+      <div class="customization-nav-item active" data-target="home-content">Home Page</div>
+     <div class="customization-nav-item" data-target="products-content">Products</div>
+      <div class="customization-nav-item" data-target="privacy-content">Privacy Policy and T&C</div>
+      <div class="customization-nav-item" data-target="faq-content">FAQs</div>
+      <div class="customization-nav-item" data-target="offer-content">Offers</div>
+      <div class="customization-nav-item" data-target="checkout-content">Checkout</div>
+      <div class="customization-nav-item" data-target="seo-content">Seo Settings</div>
+    </div>
+
+    <!-- Update Button -->
+    <div class="text-end mt-3 mb-4">
+      <button class="btn btn-success" id="updateBtn">Update</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="customization-content active" id="home-content">
+      <h5 class="mb-4">Home Page Settings</h5>
+     <!-- Header Setting Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0">Header Setting</h6>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Header Text</label>
+                        <input type="text" class="form-control" placeholder="Enter your header text">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="Enter your phone number">
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <!-- Navigation Bar Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0">Navigation Bar</h6>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Add New Navigation Option 1</label>
+                        <input type="text" class="form-control mb-2" placeholder="Enter navigation option 1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Add New Navigation Option 2</label>
+                        <input type="text" class="form-control mb-2" placeholder="Enter navigation option 2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Add New Navigation Option 3</label>
+                        <input type="text" class="form-control mb-2" placeholder="Enter navigation option 3">
+                    </div>
+                    <button class="btn btn-success">ADD</button>
+                </div>
+            </div>
+        </div>
+  
+
+
+        <div class="customization-content" id="products-content">
+  <h5 class="mb-4">Products Settings</h5>
+
+  <!-- Collection Navigation -->
+  
+
+  <!-- Earrings Content -->
+  <div id="earrings-content" class="collection-section active">
+
+    <!-- Banner 1 -->
+    <div class="card mb-4">
+      <div class="card-header bg-light"><h6 class="mb-0">Banner 1</h6></div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Banner Video/Image1</label>
+          <input type="file" class="form-control" accept="video/*,image/*">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Banner Heading1</label>
+          <input type="text" class="form-control" placeholder="Enter banner heading">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Banner Text1</label>
+          <textarea class="form-control" rows="3" placeholder="Enter banner text"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Card -->
+    <div class="card mb-4">
+      <div class="card-header bg-light"><h6 class="mb-0">Product Card</h6></div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Product Image</label>
+          <input type="file" class="form-control" accept="image/*">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Product Heading</label>
+          <input type="text" class="form-control" placeholder="Enter product heading">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Product Price</label>
+          <input type="text" class="form-control" placeholder="Enter product price">
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner 2 -->
+    <div class="card mb-4">
+      <div class="card-header bg-light"><h6 class="mb-0">Banner 2</h6></div>
+      <div class="card-body">
+        <div class="mb-3"><label class="form-label">Banner Image/Video2</label><input type="file" class="form-control" accept="video/*,image/*"></div>
+        <div class="mb-3"><label class="form-label">Banner Title2</label><input type="text" class="form-control" placeholder="Enter banner title"></div>
+        <div class="mb-3"><label class="form-label">Banner Card1 Text</label><textarea class="form-control" rows="2" placeholder="Enter card 1 text"></textarea></div>
+        <div class="mb-3"><label class="form-label">Banner Card2 Text</label><textarea class="form-control" rows="2" placeholder="Enter card 2 text"></textarea></div>
+        <div class="mb-3"><label class="form-label">Banner Card3 Text</label><textarea class="form-control" rows="2" placeholder="Enter card 3 text"></textarea></div>
+        <div class="mb-3"><label class="form-label">Banner Card4 Text</label><textarea class="form-control" rows="2" placeholder="Enter card 4 text"></textarea></div>
+        <div class="mb-3"><label class="form-label">Banner Card5 Text</label><textarea class="form-control" rows="2" placeholder="Enter card 5 text"></textarea></div>
+      </div>
+    </div>
+
+    <!-- Banner 3 -->
+    <div class="card mb-4">
+      <div class="card-header bg-light"><h6 class="mb-0">Banner 3</h6></div>
+      <div class="card-body">
+        <div class="mb-3"><label class="form-label">Banner Image/Video3</label><input type="file" class="form-control" accept="video/*,image/*"></div>
+        <div class="mb-3"><label class="form-label">Banner Title3</label><input type="text" class="form-control" placeholder="Enter banner title"></div>
+        <div class="mb-3"><label class="form-label">Banner Text3</label><textarea class="form-control" rows="3" placeholder="Enter banner text"></textarea></div>
+      </div>
+    </div>
+
+<!-- Footer Section -->
+<div class="card mb-4">
+  <div class="card-header bg-light">
+    <h6 class="mb-0">Footer</h6>
+  </div>
+  <div class="card-body" id="footerContainer">
+
+    <!-- Section Wrapper -->
+    <div id="footerFields">
+
+      <!-- One Row (Shop By, Company, Follow Us, Legal) -->
+      <div class="footer-row d-flex flex-wrap mb-3">
+        <div class="col-md-3 mb-2">
+          <h6>Shop By</h6>
+          <input type="text" class="form-control mb-1" placeholder="Text">
+          <input type="url" class="form-control" placeholder="Link">
+        </div>
+        <div class="col-md-3 mb-2">
+          <h6>Company</h6>
+          <input type="text" class="form-control mb-1" placeholder="Text">
+          <input type="url" class="form-control" placeholder="Link">
+        </div>
+        <div class="col-md-3 mb-2">
+          <h6>Follow Us</h6>
+          <input type="text" class="form-control mb-1" placeholder="Text">
+          <input type="url" class="form-control" placeholder="Link">
+        </div>
+        <div class="col-md-3 mb-2">
+          <h6>Legal</h6>
+          <input type="text" class="form-control mb-1" placeholder="Text">
+          <input type="url" class="form-control" placeholder="Link">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Add/Remove Buttons -->
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-success me-2" onclick="addFooterRow()">Add</button>
+      <button class="btn btn-danger" onclick="removeFooterRow()">Remove</button>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  function addFooterRow() {
+    const container = document.getElementById("footerFields");
+    const newRow = document.createElement("div");
+    newRow.className = "footer-row d-flex flex-wrap mb-3";
+    newRow.innerHTML = `
+      <div class="col-md-3 mb-2">
+        <h6>Shop By</h6>
+        <input type="text" class="form-control mb-1" placeholder="Text">
+        <input type="url" class="form-control" placeholder="Link">
+      </div>
+      <div class="col-md-3 mb-2">
+        <h6>Company</h6>
+        <input type="text" class="form-control mb-1" placeholder="Text">
+        <input type="url" class="form-control" placeholder="Link">
+      </div>
+      <div class="col-md-3 mb-2">
+        <h6>Follow Us</h6>
+        <input type="text" class="form-control mb-1" placeholder="Text">
+        <input type="url" class="form-control" placeholder="Link">
+      </div>
+      <div class="col-md-3 mb-2">
+        <h6>Legal</h6>
+        <input type="text" class="form-control mb-1" placeholder="Text">
+        <input type="url" class="form-control" placeholder="Link">
+      </div>
+    `;
+    container.appendChild(newRow);
+  }
+
+  function removeFooterRow() {
+    const container = document.getElementById("footerFields");
+    const rows = container.getElementsByClassName("footer-row");
+    if (rows.length > 1) {
+      container.removeChild(rows[rows.length - 1]);
+    } else {
+      alert("At least one footer section must remain.");
+    }
+  }
+</script>
+
+
+    <!-- Subscribe -->
+    <div class="card mb-4">
+      <div class="card-header bg-light"><h6 class="mb-0">Subscribe</h6></div>
+      <div class="card-body">
+        <input type="email" class="form-control" placeholder="Enter email address">
+      </div>
+    </div>
+
+    <!-- Below Footer -->
+    <div class="card mb-4">
+      <div class="card-header bg-light"><h6 class="mb-0">Below Footer</h6></div>
+      <div class="card-body">
+        <textarea class="form-control" rows="2" placeholder="Enter below footer text"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Sidebar toggles
+    document.getElementById('catalog').addEventListener('click', function() {
+      const sub = document.getElementById('catalogSub');
+      const icon = document.getElementById('catalogToggle');
+      sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+      icon.classList.toggle('fa-chevron-down');
+      icon.classList.toggle('fa-chevron-up');
+    });
+
+    document.getElementById('customers').addEventListener('click', function() {
+      const sub = document.getElementById('customersSub');
+      const icon = document.getElementById('customersToggle');
+      sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+      icon.classList.toggle('fa-chevron-down');
+      icon.classList.toggle('fa-chevron-up');
+    });
+
+    document.getElementById('onlineStore').addEventListener('click', function() {
+      const sub = document.getElementById('onlineStoreSub');
+      const icon = document.getElementById('onlineStoreToggle');
+      sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+      icon.classList.toggle('fa-chevron-down');
+      icon.classList.toggle('fa-chevron-up');
+    });
+
+    // Tab switch
+    document.querySelectorAll('.customization-nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.customization-nav-item').forEach(nav => nav.classList.remove('active'));
+        document.querySelectorAll('.customization-content').forEach(content => content.classList.remove('active'));
+        item.classList.add('active');
+        document.getElementById(item.getAttribute('data-target')).classList.add('active');
+      });
+    });
+
+    // Hamburger toggle
+    document.getElementById('menuIcon').addEventListener('click', function () {
+      document.getElementById('leftNav').classList.toggle('hide');
+      document.querySelector('.main-content').classList.toggle('full');
+    });
+
+    // Profile dropdown
+    document.getElementById('profileIcon').addEventListener('click', function() {
+      const menu = document.getElementById('profileMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close profile menu on outside click
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.profile-dropdown')) {
+        document.getElementById('profileMenu').style.display = 'none';
+      }
+    });
+
+    // Update button click
+    document.getElementById('updateBtn').addEventListener('click', function() {
+      alert('Settings updated successfully!');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  background-color: #f4f4f4;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  background-color: #18b95b;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  height: 60px;
+}
+
+.menu-icon {
+  cursor: pointer;
+  font-size: 22px;
+  color: white;
+}
+
+.profile-dropdown {
+  position: relative;
+}
+
+.profile-menu {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: white;
+  color: black;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  min-width: 150px;
+  z-index: 999;
+}
+
+.profile-menu a {
+  text-decoration: none;
+  padding: 5px 10px;
+  color: black;
+}
+
+.profile-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Sidebar Wrapper */
+.left-nav {
+  width: 250px;
+  background-color: #ffffff;
+  color: #18b95b;
+  position: fixed;
+  top: 60px; /* Adjust this based on your top navbar height */
+  left: 0;
+  height: calc(100% - 60px);
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+/* Hide Sidebar (for toggling) */
+.left-nav.hide {
+  transform: translateX(-100%);
+}
+
+/* Category Styling */
+.left-nav .category {
+  padding: 12px 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Subcategory Section */
+.left-nav .sub-category {
+  display: none;
+  padding-left: 10px;
+  background-color: #f9f9f9;
+}
+
+.left-nav .sub-category div {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.left-nav .sub-category div:hover {
+  background-color: #e6e6e6;
+  border-left: 2px solid #18b95b;
+  color: #18b95b;
+}
+
+/* Category Hover Effect */
+.left-nav .category:hover {
+  background-color: #f0f0f0;
+}
+
+/* Logout Button Styling */
+.logout-button {
+  margin: 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  width: calc(100% - 40px);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+/* Active Link Styling (optional if using JS to highlight) */
+.left-nav a div.active {
+  background-color: #e8f8f0;
+  color: #18b95b;
+  border-left: 3px solid #18b95b;
+}
+/* Sub-Category Container */
+.left-nav .sub-category {
+  display: none;
+  background-color: #f7f7f7;
+  padding-left: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Sub-Category Items (links) */
+.left-nav .sub-category a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Sub-Category Div Style */
+.left-nav .sub-category div {
+  padding: 10px 20px;
+  margin: 2px 0;
+  font-size: 14px;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Hover Effect */
+.left-nav .sub-category div:hover {
+  background-color: #e9f9f0;
+  color: #18b95b;
+  border-left: 3px solid #18b95b;
+}
+
+/* Active State (Optional: if you use JS to mark current page) */
+.left-nav .sub-category div.active {
+  background-color: #d9f5e4;
+  color: #18b95b;
+  border-left: 4px solid #18b95b;
+  font-weight: 600;
+}
+/* Reset all anchor tag styles in sidebar */
+.left-nav a {
+  color: #18b95b;             /* Match your sidebar theme */
+  text-decoration: none;      /* Remove underline */
+  display: block;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect */
+.left-nav a:hover {
+  background-color: #e9f9f0;
+  color: #14a34d; /* Slightly darker green */
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  margin-top: 70px;
+  padding: 20px;
+  width: 100%;
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.full {
+  margin-left: 0;
+}
+
+/* Customization Nav */
+.customization-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.customization-nav-item {
+  padding: 8px 12px;
+  background: #eee;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.customization-nav-item.active {
+  background-color: #18b95b;
+  color: white;
+}
+
+.customization-content {
+  display: none;
+  margin-top: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.customization-content.active {
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .left-nav {
+    transform: translateX(-100%);
+  }
+
+  .left-nav.show {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
